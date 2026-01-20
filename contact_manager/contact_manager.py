@@ -9,9 +9,11 @@ while True:
     print(" 4.Show all contact")
     print(" 5.Exit")
 
-
-    choice = int(input("Enetr your choice: "))
-
+    try:
+        choice = int(input("Enetr your choice: "))
+    except ValueError:
+        print("please enter vaalid number")
+    
     if(choice == 1):
         name = input("ENter name : ")
         contact.append(name)
@@ -21,16 +23,22 @@ while True:
         name = input("Enter name ")
         if name in contact:
             contact.remove(name)
-        print(contact)
+            print("Contact removed sucessfully")
+        else:
+            print("Contact not found ")
+        
     elif(choice  == 3):
         name = input("Enter name:")
         if name in contact:
-            print("Found: ")
+            print(f"Found:{name}")
+        else:
+            print("Contact not found")
+
     elif(choice == 4):
         print("All contact ",contact)
-    else:
-        print("Exit the code: ")
+    elif(choice == 5):
+        print("Exiting Contact Manager ")
         break
 
-else:
-    print("INvalid choice: ")
+    else:
+        print("Invalid choice. Please select 1-5 ")
